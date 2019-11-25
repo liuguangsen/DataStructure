@@ -79,6 +79,7 @@ public class TreeNode extends Node {
                 if (leftChild == null) {
                     Node newNode = new Node(data);
                     node.leftChild = newNode;
+                    newNode.parent = node;
                 } else {
                     insert(leftChild, data);
                 }
@@ -88,10 +89,65 @@ public class TreeNode extends Node {
                 if (rightChild == null) {
                     Node newNode = new Node(data);
                     node.rightChild = newNode;
+                    newNode.parent = node;
                 } else {
                     insert(rightChild, data);
                 }
             }
+        }
+    }
+
+    public void delete(int data) {
+        Node search = search(data);
+        delete(search, data);
+    }
+
+    private void delete(Node node, int data) {
+        if (node != null) {
+            Node leftChild = node.leftChild;
+            Node rightChild = node.rightChild;
+            Node parent = node.parent;
+            boolean isLeftChild = parent.leftChild == node;
+
+            if (leftChild == null && rightChild != null) {
+                rightChild.parent = parent;
+                if (isLeftChild) {
+                    parent.leftChild = rightChild;
+                } else {
+                    parent.rightChild = rightChild;
+                }
+            } else if (leftChild != null && rightChild == null) {
+                leftChild.parent = parent;
+                if (isLeftChild) {
+                    parent.leftChild = leftChild;
+                } else {
+                    parent.rightChild = leftChild;
+                }
+            } else if (leftChild != null) {
+                // 如果两个子view都不是空的
+                // 右子树直接上升
+                // 把左子树统统嫁接到右子树的最左子也节点
+                parent.leftChild = rightChild;
+                rightChild.parent = parent;
+                // 找到右子树的最左子叶节点
+                Node lastLeftChild = findLeftChild(rightChild);
+                lastLeftChild.leftChild = leftChild;
+                leftChild.parent = lastLeftChild;
+            } else {
+                if (isLeftChild) {
+                    parent.leftChild = null;
+                } else {
+                    parent.rightChild = null;
+                }
+            }
+        }
+    }
+
+    public Node findLeftChild(Node node) {
+        if (node.leftChild == null) {
+            return node;
+        } else {
+            return findLeftChild(node.rightChild);
         }
     }
 }
