@@ -1,6 +1,8 @@
 package com.liugs.datastructure.tree;
 
 
+import java.util.HashMap;
+
 public class TreeNode extends Node {
     private static final String TAG = "TreeNode";
     public Node header;
@@ -138,6 +140,17 @@ public class TreeNode extends Node {
                     parent.leftChild = null;
                 } else {
                     parent.rightChild = null;
+                }
+                int []result = new int[2];
+                int []src = {2,7,11,12};
+                HashMap<Integer,Integer> map = new HashMap<>();
+                for (int i = 0; i < src.length; i++) {
+                    int num = 9 - src[i];
+                    if (map.containsValue(num)){
+                        result[1] = i;
+                        result[0] = map.get(num);
+                    }
+                    map.put(src[i],i);
                 }
             }
         }
