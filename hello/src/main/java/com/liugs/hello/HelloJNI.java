@@ -2,7 +2,7 @@ package com.liugs.hello;
 
 public class HelloJNI {
     static {
-        System.loadLibrary("hello"); // Load native library hello.dll (Windows) or libhello.so (Unixes)
+//        System.loadLibrary("hello"); // Load native library hello.dll (Windows) or libhello.so (Unixes)
         //  at runtime
         // This library contains a native method called sayHello()
     }
