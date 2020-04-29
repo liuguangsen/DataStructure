@@ -28,4 +28,16 @@ public class SumTest {
         }
         return result;
     }
+
+    public static String get(String s,int k){
+        char[] endChar = s.toCharArray();
+        for (int i = 0; i < k; i++) {
+            char temp = endChar[0];
+            System.arraycopy(endChar, 1, endChar, 0, endChar.length - 1);
+            endChar[endChar.length -1] = temp;
+        }
+        return new String(endChar);
+    }
+
+
 }

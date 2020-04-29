@@ -14,12 +14,12 @@ public class TreeUtil {
 
         treeNode.preOrderErgodic(treeNode.header);
         System.out.println("");
-//        treeNode.middleOrderErgodic(treeNode.header);
-//        System.out.println("");
-//        treeNode.afterOrderErgodic(treeNode.header);
-        treeNode.delete(3);
-        treeNode.preOrderErgodic(treeNode.header);
+        treeNode.middleOrderErgodic(treeNode.header);
         System.out.println("");
+        treeNode.afterOrderErgodic(treeNode.header);
+//        treeNode.delete(3);
+//        treeNode.preOrderErgodic(treeNode.header);
+//        System.out.println("");
 
 
 

@@ -8,7 +8,6 @@ public class TreeNode extends Node {
     public Node header;
 
     public TreeNode() {
-        this.header = new Node();
     }
 
     public void preOrderErgodic(Node node) {
@@ -26,7 +25,7 @@ public class TreeNode extends Node {
             return;
         }
         middleOrderErgodic(node.leftChild);
-        // 前序遍历 第二次遍历到Node就打印出来
+        // 中序遍历 第二次遍历到Node就打印出来
         System.out.print(node.data + " ");
         middleOrderErgodic(node.rightChild);
     }
@@ -37,7 +36,7 @@ public class TreeNode extends Node {
         }
         afterOrderErgodic(node.leftChild);
         afterOrderErgodic(node.rightChild);
-        // 前序遍历 第三次遍历到Node就打印出来
+        // 后序遍历 第三次遍历到Node就打印出来
         System.out.print(node.data + " ");
     }
 
@@ -69,6 +68,14 @@ public class TreeNode extends Node {
     }
 
     public void insert(int data) {
+        if (header == null){
+            header = new Node();
+            header.parent = null;
+            header.data = data;
+            header.leftChild = null;
+            header.rightChild = null;
+            return;
+        }
         insert(header, data);
     }
 
