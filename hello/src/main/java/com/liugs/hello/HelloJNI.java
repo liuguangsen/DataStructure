@@ -1,5 +1,7 @@
 package com.liugs.hello;
 
+import java.util.HashMap;
+
 public class HelloJNI {
     static {
 //        System.loadLibrary("hello"); // Load native library hello.dll (Windows) or libhello.so (Unixes)
@@ -12,6 +14,11 @@ public class HelloJNI {
 
     // Test Driver
     public static void main(String[] args) {
-        new HelloJNI().sayHello();  // Create an instance and invoke the native method
+//        new HelloJNI().sayHello();  // Create an instance and invoke the native method
+
+        int h = 2;
+        int i = -20 >>> 2;
+                //-2 >> 1;
+        System.out.println(i);
     }
 }
